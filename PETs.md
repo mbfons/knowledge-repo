@@ -54,6 +54,42 @@ Namely, PETs could be divided into the following four categories (OECD):
 
 PETs tend to not be standalone tools, but rather used together with other PETs or other organisational tools to achieve data governance objectives.
 
+### Tools
+
+#### Data obfuscation
+
+##### Anonymisation
+
+Anonymisation is the process of removing from the data the identifying elements, such that re-identification of a data subject is not possible.
+Anonymised data should not be linkable or traceable back to an individual, even through enrichment.
+True anonymisation can however be hard to achieve.
+The concept of anonymisation is widely used in legislation, namely in GDPR.
+
+##### Pseudonymisation
+
+Pseudonymisation is a deidentification process that involves removing potentially identifiable information about data subjects from the data, in order to reduce reidentification risk.
+Pseudonymisation can be reversed typically. It preserves the ability to, if need arises, combine the information with other identifiable datasets, either through a common key or encryption process.
+It is a weaker form of deidentification than anonymisation.
+
+##### Synthetic data
+
+Synthetic data is generated rather than real source data. It is often generated from population models. Often it is desired that artifical data has similar statistical properties to the source data, but a trade-off between privacy and fidelity (accuracy) needs to be considered.
+
+While synthetic data tends to reduce privacy risks, it often will not eliminate them. There can namely be risks of re-identification (for instance via attacks) or that source data records appear in the synthetic dataset.
+
+##### Differential privacy
+
+Differential Privacy techniques add "noise" (small changes) to the original data to obfuscate certain details, while maintaining the explanatory power of the data.
+This relies on a principle that small (differential) changes to individual entries do not significantly affect aggregate results. As such, robust aggregate information can be generated while reducing the how reliable individual elements are (hence protecting them).
+These small changes can be added during data collection (distributed) or centrally ahead of data release (centralised).
+Parameters (e.g. "how much noise?") still need to be chosen to obtain the relevant trade-off between privacy protection and utility. Work on evaluation is also needed.
+
+##### Zero-knowledge proofs (ZKP)
+
+Zero-knowledge proofs can be used to answer whether something is true or not based on information contained in a dataset, without disclosing the underlying dataset itself (e.g. is a given person over 21). 
+This can mean for instance that for an organisation to answer a query it has, data subjects do not need to submit sensitive information but rather have the organisation verify the claim.
+These technologies are still in their early development phases.
+
 ### Useful links
 
 OECD (2023), "Emerging privacy-enhancing technologies: Current regulatory and policy approaches", OECD Digital Economy Papers, No. 351, OECD Publishing, Paris, [https://doi.org/10.1787/bf121be4-en](https://doi.org/10.1787/bf121be4-en).
