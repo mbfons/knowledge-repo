@@ -34,7 +34,7 @@ Namely, PETs could be divided into the following four categories (OECD):
     * Advantages:
     * Cautions: needs correct implementation; data not necessarily anonymous since some tools or added data may be able to reidentify 
 
-* **Encrypted data processing tools**: tools that allow data to remain encrypted during use.
+* **Encrypted data processing tools**: tools that allow data to remain encrypted during use (data remains unmodified but hidden).
 
     * Types: e.g. homomorphic encryption; multi-party computation; trusted research environments / secure data environments
     * Advantages: data does not need to be decrypted before use
@@ -46,7 +46,7 @@ Namely, PETs could be divided into the following four categories (OECD):
     * Advantages: microdata does not need to be shared by parties to allow for insights; scalability
     * Cautions: computation and infrastructure costs, connectivity, information on data models and interoperability
  
-* **Data accountability tools**: tools that seek to enhance data protection and privacy by allowing for data subjects to have control over their own data. Not strictly a PET since their primary aim is not data confidentiality itself but rather control and accountability. 
+* **Data accountability tools**: tools that seek to enhance data protection and privacy by allowing for data subjects to have oversight, agency and control over their own data. Not strictly a PET since their primary aim is not data confidentiality itself from a technical standpoint but rather control and accountability. 
 
     * Types: e.g. personal data stores, accountable systems
     * Advantages: user control and transparency
@@ -89,6 +89,65 @@ Parameters (e.g. "how much noise?") still need to be chosen to obtain the releva
 Zero-knowledge proofs can be used to answer whether something is true or not based on information contained in a dataset, without disclosing the underlying dataset itself (e.g. is a given person over 21). 
 This can mean for instance that for an organisation to answer a query it has, data subjects do not need to submit sensitive information but rather have the organisation verify the claim.
 These technologies are still in their early development phases.
+
+#### Encrypted data processing tools
+
+##### Homomorphic encryption (HE)
+
+Homomorphic encryption is a tool that makes computations based on encrypted data. This contrasts with standard data processing approaches where data needs to me made visible to the data processor.
+The data subject encrypts the data with a key, sends it over to the data processor who will perform computations on the still-encrypted data that return an encrypted output, and this is returned to the data subject who can then unlock the data with the key.
+
+For now, HE is less efficient than standard processing, requiring more computational power and time. It us used in small use cases.
+
+##### Multi-party computation (MPC)
+
+Multi-party computation are tools that allow a set of parties to jointly compute a function or transformation over their respective source data while keeping that source data private. Namely, it can aggregate sensitive data without the need for any single party to disclose their own data.
+It removes the need for a trusted third party.
+HE techniques are increasingly used in MPC.
+
+##### Private set intersection (PSI)
+
+Private set intersection (PSI) is a type of secure MPC that allows data subjects to identify common elements in their datasets without the need to reveal further contents or other elements of those datasets.
+PSI has high maturity as a HE and MPC. It has been used for large-scale applications such as Covid-19 contact tracing or contact discovery in mobile apps.
+
+##### Trusted Execution/Research Environments (TEE/TRE)
+
+TEEs are a purpose-built area that provides processing capabilities separate from the operating system (OS), securely.
+This area will hold sensitive, non-modifiable data against which secure code can be run.
+It is designed such that the operating system cannot access information or read secrets, driven by a default working assumption that the OS is unsecure.
+
+#### Federated and Distributed Analytics
+
+##### Federated Learning
+
+Traditionally, data analysis foresaw that linkage and processing would apply to a single centralised dataset (in turn created from datasets of the various data subjects).
+With federated learning, raw data is preprocessed by each data subject (data source), with only the summary statistics or learnt parameters passed on to the data processor. These are then assembled with similar summary statistics or model parameters from other data subjects.
+In this way, raw sensitive data does not leave the data subjects and does not need to be stored by the data controller or processor.
+While this technique is widely deployed by some organisations, there are concerns that features may still reveal private information in some cases or that attacks could reveal the originating data.
+
+##### Distributed analytics
+[revisit]
+In distributed or decentralised analytics, the data is housed by the data controller in a central location but the analysis or model training is distributed across multiple nodes.
+It often requires common data models to be developed and coded first, to promote interoperability and reuse. With distributed analytics, software and tools can be deployed to where the data is located, as opposed to transferring data to a central repository.
+In this approach data processors and analysts cannot directly access the data.
+
+####  Data Accountability tools
+
+##### Accountable Systems
+
+Systems that promote the management of how data is collected, processed, analysed and shared and that track compliance. This includes visibility but also rule-, regulation- and user-based control.
+These systems are still in early pilot, so are not ready for implementation. Distributed ledger technologies are one of the main technologies that could be leveraged in the future, though they come with their own risks.
+
+##### Threshold Secret Sharing (TSS)
+
+Threshold Secret Sharing is where a certain preagreed number (rather than typically one) and type of keys need to be used to unlock encrypted data. In this way, thresholds are set before data can be accessed.
+For now, applications are narrow though and require large overhead if used on large datasets.
+
+##### Personal Data Stores (PDS)
+
+Personal Data Stores give control to individuals in deciding at a granular level how their data is stored, accessed, processed and disseminated. This enforces individual data portability rights and agency.
+PDS switches the paradigm from the traditional data processing approach, which requires organisations to collect information from individuals and store them in large datasets for processing.
+Most deployments are still in pilot stages. Other behavioural barriers also need to be addressed.
 
 ### Useful links
 
