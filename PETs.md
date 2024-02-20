@@ -110,7 +110,7 @@ HE techniques are increasingly used in MPC.
 Private set intersection (PSI) is a type of secure MPC that allows data subjects to identify common elements in their datasets without the need to reveal further contents or other elements of those datasets.
 PSI has high maturity as a HE and MPC. It has been used for large-scale applications such as Covid-19 contact tracing or contact discovery in mobile apps.
 
-##### Trusted Execution/Research Environments (TEE/TRE)
+##### Trusted Execution Environments (TEE)
 
 TEEs are a purpose-built area that provides processing capabilities separate from the operating system (OS), securely.
 This area will hold sensitive, non-modifiable data against which secure code can be run.
@@ -121,9 +121,12 @@ It is designed such that the operating system cannot access information or read 
 ##### Federated Learning
 
 Traditionally, data analysis foresaw that linkage and processing would apply to a single centralised dataset (in turn created from datasets of the various data subjects).
-With federated learning, raw data is preprocessed by each data subject (data source), with only the summary statistics or learnt parameters passed on to the data processor. These are then assembled with similar summary statistics or model parameters from other data subjects.
+With federated learning, raw data is preprocessed by each data subject (data source), with only the summary statistics or learnt parameters passed on to the data processor. These are then assembled with similar summary statistics or model parameters from other data subjects. For AI applications, it involves the training of AI models on local information to create local models, where the learnt parameters (gradients) can then be shared to form an accurate global model.
 In this way, raw sensitive data does not leave the data subjects and does not need to be stored by the data controller or processor.
+There are both centralised and decentralised models.
+While it has similarities to SPMC, it is not necessarily a type of SPMC (for instance centralised FL requires a trusted third-party, while SPMC not necessarily).
 While this technique is widely deployed by some organisations, there are concerns that features may still reveal private information in some cases or that attacks could reveal the originating data.
+
 
 ##### Distributed analytics
 [revisit]
